@@ -3,6 +3,7 @@ package br.com.loja.bin;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.loja.DAO.FornecedorDAO;
 import br.com.loja.DAO.ProdutoDAO;
 import br.com.loja.domain.Fornecedor;
 import br.com.loja.domain.Produto;
@@ -20,11 +21,13 @@ public class TesteDados {
 		
 		System.out.println("TESTE DE EXECUÇÃO BANCO DE DADOS");
 		
-		ProdutoDAO pdao = new ProdutoDAO();
-		//Produto p = new Produto();
+		Fornecedor f = new Fornecedor();
+		FornecedorDAO fdao= new FornecedorDAO();
 		
-		pdao.consultar();
+		fdao.consultar();
 		
+		System.out.println("Dados trazidos:");
+		System.out.println(fdao.consultar());
 
 
 	}

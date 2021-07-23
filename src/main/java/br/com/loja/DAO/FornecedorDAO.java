@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.loja.domain.Fornecedor;
+
 
 
 
@@ -48,11 +50,10 @@ public class FornecedorDAO {
 
 	
 	//Read
-	public void consultar() {
+	public ArrayList<Fornecedor> consultar() {
 		String sql = "SELECT * FROM fornecedor";
 		//Imprimir um array associativo
-		//HashMap<String, String> dados = new HashMap<String, String>();
-		ArrayList<String> rows = new ArrayList<String>();
+		ArrayList<Fornecedor> rows = new ArrayList<Fornecedor>();
 		
 		try {
 			
@@ -60,25 +61,26 @@ public class FornecedorDAO {
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			
-			
 			ResultSet rs = pstmt.executeQuery(sql);
 			
-			
-			
 			while(rs.next()) {
+				Fornecedor fornecedorEncontrado = new Fornecedor();
+				 
 				
-				String idfornecedor = rs.getString("idfornecedor");
+				int idfornecedor 	= rs.getInt("idfornecedor");
 				String nome			= rs.getString("nome");
 				String contato 		= rs.getString("contato");
 				String telefone 	= rs.getString("telefone");
 				
 				//Verificação dos dados
-				rows.add(idfornecedor);
-				rows.add(nome);
-				rows.add(contato);
-				rows.add(telefone);
+				fornecedorEncontrado.setIdFornecedor(idfornecedor);
+				fornecedorEncontrado.setNomeFornecedor(nome);
+				fornecedorEncontrado.setContatoFornecedor(contato);
+				fornecedorEncontrado.setTelefoneFornecedor(telefone);
 				
-				System.out.print(rows);
+				rows.add(fornecedorEncontrado);
+				
+				System.out.print("Linha:  "+rows);
 			}
 			
 		} catch (ClassNotFoundException e) {
@@ -88,6 +90,7 @@ public class FornecedorDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return rows;
 		
 		
 	}

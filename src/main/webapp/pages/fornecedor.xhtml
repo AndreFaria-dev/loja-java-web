@@ -2,33 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/templates/modeloLoja.xhtml"
-	>
-	<ui:define name = "menu" >
-		<ui:include src="/include/menu.xhtml" />	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/modeloLoja.xhtml">
+	
+	<ui:define name="menu">
+		<ui:include src="/include/menu.xhtml" />
 	</ui:define>
 
-<h:form>
-    <div class="card">
-        <p:dataTable var="product" value="#{dtBasicView.products}">
-            <p:column headerText="Code">
-                <h:outputText value="#{product.code}" />
-            </p:column>
+	<ui:define name="conteudo">
+		<h:form>
+			<div class="card">
+				<p:dataTable emptyMessage="Nenhum fornecedor encontrado."
+					value="#{MBFornecedor.Itens}" var="item" 
+					paginator="true"
+					rows="15"
+					>
+					<p:column headerText="ID">
+						 <h:outputText value="#{item.idFornecedor}" />
+					</p:column>
 
-            <p:column headerText="Name">
-                <h:outputText value="#{product.name}" />
-            </p:column>
+					<p:column headerText="Nome">
+						<h:outputText value="#{item.nomeFornecedor}"></h:outputText>
+					</p:column>
 
-            <p:column headerText="Category">
-                <h:outputText value="#{product.category}" />
-            </p:column>
+					<p:column headerText="Contato">
+						<h:outputText value="#{item.contatoFornecedor}"></h:outputText>
+					</p:column>
 
-            <p:column headerText="Quantity">
-                <h:outputText value="#{product.quantity}" />
-            </p:column>
-        </p:dataTable>
-    </div>
-</h:form>
-
+					<p:column headerText="Telefone">
+						<h:outputText value="#{item.telefoneFornecedor}"></h:outputText>
+					</p:column>
+				</p:dataTable>
+			</div>
+		</h:form>
+	</ui:define>
 
 </ui:composition>
