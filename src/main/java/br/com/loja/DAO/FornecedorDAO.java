@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.faces.bean.ApplicationScoped;
+
 import br.com.loja.domain.Fornecedor;
 
 
@@ -80,7 +82,10 @@ public class FornecedorDAO {
 				
 				rows.add(fornecedorEncontrado);
 				
-				System.out.print("Linha:  "+rows);
+				//Debug
+				
+				System.out.println("Linha:  "+rows);
+				System.out.println("Dados: "+idfornecedor+" "+nome+" "+contato+" "+telefone);
 			}
 			
 		} catch (ClassNotFoundException e) {

@@ -28,8 +28,8 @@ public class TesteDados {
 		
 		System.out.println("Dados trazidos:");
 		System.out.println(fdao.consultar());
-
-
+		
+		
 	}
 
 }
